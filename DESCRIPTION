@@ -1,0 +1,23 @@
+Package: sdlr
+Type: Package
+Title: Tool Box for Video Analysis
+Version: 0.1.0
+Authors@R: c(
+    person("Shota", "Ochi", email = "shotaochi1990@gmail.com", role = c("aut", "cre", "cph")))
+Maintainer: Shota Ochi <shotaochi1990@gmail.com>
+Description: Provides tools for video analysis based on FFmpeg. 
+License: GPL-3
+Imports: 
+    checkmate,
+    Rcpp,
+    R6
+Suggests: 
+    testthat (>= 2.0.0)
+URL: https://github.com/ShotaOchi/sdlr
+BugReports: https://github.com/ShotaOchi/sdlr/issues
+NeedsCompilation: yes
+SystemRequirements: SDL2
+LinkingTo: Rcpp
+LazyData: true
+RoxygenNote: 7.2.3
+Encoding: UTF-8

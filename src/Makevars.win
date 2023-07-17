@@ -1,0 +1,2 @@
+PKG_CPPFLAGS += -I../inst/include
+PKG_LIBS = -lSDL2 -lole32 -lsetupapi -lgdi32 -limm32 -lVersion -loleaut32 -lwinmm -lsamplerate 
