@@ -65,7 +65,18 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-          sudo apt install -y  libsdl2-dev
+          sudo apt install -y  libsdl2-dev pulseaudio libportaudio2 dbus-x11
+          dbus-launch pulseaudio --start
+
+      - name: Install Scream on Windows
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          Invoke-WebRequest https://github.com/duncanthrax/scream/releases/download/4.0/Scream4.0.zip -OutFile Scream4.0.zip
+          Expand-Archive -Path Scream4.0.zip -DestinationPath Scream
+          Import-Certificate -FilePath Scream\Install\driver\x64\Scream.cat -CertStoreLocation Cert:\LocalMachine\TrustedPublisher 
+          Scream\Install\helpers\devcon-x64.exe install Scream\Install\driver\x64\Scream.inf *Scream
+          net start Audiosrv
 
       - name: Install System Requirements on Windows
         if: runner.os == 'Windows'
@@ -73,7 +84,6 @@ jobs:
           pacman -Sy --noconfirm mingw-w64-x86_64-SDL2
           pacman -Sy --noconfirm mingw-w64-i686-SDL2
           pacman -Sy --noconfirm mingw-w64-ucrt-x86_64-SDL2
-          net start Audiosrv
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
