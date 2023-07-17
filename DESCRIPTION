@@ -1,6 +1,6 @@
 Package: sdlr
 Type: Package
-Title:  R interface to SDL2 Library
+Title:  R Interface to SDL2 Library
 Version: 0.1.0
 Authors@R: c(
     person("Shota", "Ochi", email = "shotaochi1990@gmail.com", role = c("aut", "cre", "cph")))
