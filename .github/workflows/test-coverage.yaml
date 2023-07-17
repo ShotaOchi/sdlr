@@ -64,6 +64,11 @@ jobs:
           extra-packages: any::covr
           needs: coverage
 
+      - name: Executable Permissions
+        run: |
+          chmod +x configure
+          chmod +x cleanup
+
       - name: Test coverage
         run: |
           covr::codecov(
