@@ -57,7 +57,8 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-          sudo apt install -y  libsdl2-dev
+          sudo apt install -y  libsdl2-dev pulseaudio libportaudio2 dbus-x11
+          dbus-launch pulseaudio --start
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
