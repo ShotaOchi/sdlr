@@ -29,8 +29,22 @@ class SDLAUDIO
       devid = SDL_OpenAudioDevice(NULL, 0, &spec, NULL, 0);
       if (!devid)
       {
-        const std::string msg(SDL_GetError());
-        Rcpp::stop("failed to open audio device.\n" + msg + "\n");
+        bool is_failed = true;
+        int n = SDL_GetNumAudioDevices(0);
+        for (int i = 0; i < n; ++i)
+        {
+          devid = SDL_OpenAudioDevice(SDL_GetAudioDeviceName(i, 0), 0, &spec, NULL, 0);
+          if (devid)
+          {
+            is_failed = false;
+            break;
+          }
+        }
+        if (is_failed)
+        {
+          const std::string msg(SDL_GetError());
+          Rcpp::stop("failed to open audio device.\n" + msg + "\n");
+        }
       }
     }
     
