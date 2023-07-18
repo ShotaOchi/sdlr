@@ -3,7 +3,7 @@ test_that("audio",
   sound <- system.file("extdata", "train-whistle.wav", package = "sdlr")
   expect_no_error(getAudioDevices())
   dev <- getAudioDevices()
-  skip_if(length(dev) > 0, "A list of audio devices is not available.")
+  skip_if(length(dev) < 1, "A list of audio devices is not available.")
 #  tryCatch(SDLaudio$new(sound), error = function(e) skip("failed to open audio device."))
   expect_no_error(SDLaudio$new(sound))
   expect_no_error(SDLaudio$new(sound, 0))
