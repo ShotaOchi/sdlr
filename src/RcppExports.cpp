@@ -11,25 +11,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// hello_cpp
-void hello_cpp();
-RcppExport SEXP _sdlr_hello_cpp() {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    hello_cpp();
-    return R_NilValue;
-END_RCPP
-}
-// hello_audio_cpp
-void hello_audio_cpp(const Rcpp::String& filenamer);
-RcppExport SEXP _sdlr_hello_audio_cpp(SEXP filenamerSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Rcpp::String& >::type filenamer(filenamerSEXP);
-    hello_audio_cpp(filenamer);
-    return R_NilValue;
-END_RCPP
-}
 // getAudioDevicesCpp
 Rcpp::StringVector getAudioDevicesCpp();
 RcppExport SEXP _sdlr_getAudioDevicesCpp() {
@@ -128,8 +109,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_sdlr_hello_cpp", (DL_FUNC) &_sdlr_hello_cpp, 0},
-    {"_sdlr_hello_audio_cpp", (DL_FUNC) &_sdlr_hello_audio_cpp, 1},
     {"_sdlr_getAudioDevicesCpp", (DL_FUNC) &_sdlr_getAudioDevicesCpp, 0},
     {"_sdlr_makeSDLAUDIO", (DL_FUNC) &_sdlr_makeSDLAUDIO, 1},
     {"_sdlr_makeSDLAUDIOint", (DL_FUNC) &_sdlr_makeSDLAUDIOint, 2},
