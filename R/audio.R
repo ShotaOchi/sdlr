@@ -84,10 +84,10 @@ SDLaudio <- R6Class("SDLaudio",
   )
 )
 
+#' @export
 print.SDLaudio <- function(x, ...)
 {
-  print("SDLaudio object")
-  capture.output(x)
+  cat(sprintf("SDLaudio object\n path: %s\n %s\n", x$path, capture.output(x$extptr)))
 }
 
 #' Get List of Audio Devices

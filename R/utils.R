@@ -1,3 +1,8 @@
+assert_count <- function(count)
+{
+  assert_number(count, finite = TRUE)
+}
+
 assert_idx <- function(idx)
 {
   assert_number(idx, lower = 0, finite = TRUE)

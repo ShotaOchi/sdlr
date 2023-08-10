@@ -12,6 +12,14 @@ view <- function(img, pos = "undefined", chorder = "cxy", title = "", renderer_i
   assert_pos(pos)
   assert_name(title)
   assert_idx_renderer(renderer_idx)
+  max_count <- getOption("sdlr_max_count")
+  if (is.null(max_count))
+  {
+    max_count <- -1
+  } else
+  {
+    assert_count(max_count)
+  }
   dim_img <- dim(img)
   if (length(dim_img) == 2)
   {
@@ -66,25 +74,25 @@ view <- function(img, pos = "undefined", chorder = "cxy", title = "", renderer_i
     }
     if (is.numeric(pos))
     {
-      displaySDLRIMAGEnumeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx)
+      displaySDLRIMAGEnumeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, max_count = max_count)
     } else if (pos == "undefined")
     {
-      displaySDLRIMAGEnumericU(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx)
+      displaySDLRIMAGEnumericU(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx, max_count = max_count)
     } else
     {
-      displaySDLRIMAGEnumericC(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx)
+      displaySDLRIMAGEnumericC(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx, max_count = max_count)
     }
   } else
   {
     if (is.numeric(pos))
     {
-      displaySDLRIMAGEraw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx)
+      displaySDLRIMAGEraw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, max_count = max_count)
     } else if (pos == "undefined")
     {
-      displaySDLRIMAGErawU(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx)
+      displaySDLRIMAGErawU(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx, max_count = max_count)
     } else
     {
-      displaySDLRIMAGErawC(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx)
+      displaySDLRIMAGErawC(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx, max_count = max_count)
     }
   }
 }

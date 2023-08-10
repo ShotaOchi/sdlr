@@ -11,20 +11,28 @@
 
 #define SDLR_MINIMAL_WIDTH 200
 
-inline void SDLR_wait(SDL_Window* window, SDL_Event event, Uint32 wait_time = 1)
+inline void SDLR_wait(SDL_Window* window, SDL_Event event, const int max_count = -1, const Uint32 wait_time = 1)
 {
   int window_x;
   int window_y;
   int mouse_x = 0;
   int mouse_y = 0;
   bool dragged = false;
-  Rcpp::Function f("interactive");
-  bool is_interactive = f();
   Uint32 prev_time = SDL_GetTicks();
+  int count = 0;
   while(true)
   {
     if (SDL_PollEvent(&event) == 0)
     {
+      if (max_count >= 0)
+      {
+        count += 1;
+        if (count >= max_count)
+        {
+          break;
+        }
+        SDL_Delay(1);
+      }
       continue;
     }
     if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT)
@@ -41,7 +49,7 @@ inline void SDLR_wait(SDL_Window* window, SDL_Event event, Uint32 wait_time = 1)
     {
       break;
     }
-    if (dragged && SDL_GetTicks() > prev_time + wait_time)
+    if (dragged && (SDL_TICKS_PASSED(prev_time, wait_time)))
     {
       prev_time = SDL_GetTicks();
       int tmp_x, tmp_y;
@@ -52,10 +60,6 @@ inline void SDLR_wait(SDL_Window* window, SDL_Event event, Uint32 wait_time = 1)
         SDL_SetWindowPosition(window, window_x + tmp_x - mouse_x, window_y + tmp_y - mouse_y);
         SDL_GetGlobalMouseState(&mouse_x, &mouse_y);
       }
-    }
-    if(!is_interactive)
-    {
-      break;
     }
   }
 }

@@ -1,8 +1,7 @@
 test_that("image",
 {
-
-  expect(interactive() == FALSE, "the r session is interactive...")
-
+  options("sdlr_max_count" = 100)
+  
   dimhuman <- dim(human)
   dimxyc <- c(dimhuman[2:3], dimhuman[1])
   
@@ -98,4 +97,6 @@ test_that("image",
   expect_no_error(a$destroy())
   expect_no_error(rm(a))
   expect_no_error(gc())
+  
+  options("sdlr_max_count" = NULL)
 })

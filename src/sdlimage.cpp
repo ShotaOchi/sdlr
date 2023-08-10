@@ -1,45 +1,45 @@
 #include <sdlr.h>
 
 // [[Rcpp::export]]
-void displaySDLRIMAGEnumeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1)
+void displaySDLRIMAGEnumeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int max_count = -1)
 {
   SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
-  SDLR_wait(img.window, img.event);
+  SDLR_wait(img.window, img.event, max_count);
 }
 
 // [[Rcpp::export]]
-void displaySDLRIMAGEraw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1)
+void displaySDLRIMAGEraw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int max_count = -1)
 {
   SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
-  SDLR_wait(img.window, img.event);
+  SDLR_wait(img.window, img.event, max_count);
 }
 
 // [[Rcpp::export]]
-void displaySDLRIMAGEnumericC(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int renderer_idx = -1)
+void displaySDLRIMAGEnumericC(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int renderer_idx = -1, const int max_count = -1)
 {
   SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, renderer_idx);
-  SDLR_wait(img.window, img.event);
+  SDLR_wait(img.window, img.event, max_count);
 }
 
 // [[Rcpp::export]]
-void displaySDLRIMAGErawC(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int renderer_idx = -1)
+void displaySDLRIMAGErawC(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int renderer_idx = -1, const int max_count = -1)
 {
   SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, renderer_idx);
-  SDLR_wait(img.window, img.event);
+  SDLR_wait(img.window, img.event, max_count);
 }
 
 // [[Rcpp::export]]
-void displaySDLRIMAGEnumericU(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int renderer_idx = -1)
+void displaySDLRIMAGEnumericU(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int renderer_idx = -1, const int max_count = -1)
 {
   SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, renderer_idx);
-  SDLR_wait(img.window, img.event);
+  SDLR_wait(img.window, img.event, max_count);
 }
 
 // [[Rcpp::export]]
-void displaySDLRIMAGErawU(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int renderer_idx = -1)
+void displaySDLRIMAGErawU(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int renderer_idx = -1, const int max_count = -1)
 {
   SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, renderer_idx);
-  SDLR_wait(img.window, img.event);
+  SDLR_wait(img.window, img.event, max_count);
 }
 
 // [[Rcpp::export]]
