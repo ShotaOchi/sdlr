@@ -65,7 +65,7 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-          sudo apt install -y  libsdl2-dev pulseaudio libportaudio2 dbus-x11
+          sudo apt install -y  libsdl2-dev pulseaudio libportaudio2 dbus-x11 xorg-dev
           dbus-launch pulseaudio --start
 
       - name: Install System Requirements on Windows
