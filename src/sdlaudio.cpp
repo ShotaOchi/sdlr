@@ -12,7 +12,6 @@ Rcpp::StringVector getAudioDevicesCpp()
   {
     Rcpp::Rcout << "failed to get list of audio devices.\n";
     Rcpp::StringVector out(0);
-    SDL_Quit();
     return out;
   }
   Rcpp::StringVector out(num_audiodev);
@@ -20,7 +19,6 @@ Rcpp::StringVector getAudioDevicesCpp()
   {
     out[i] = std::string(SDL_GetAudioDeviceName(i, 0));
   }
-  SDL_Quit();
   return out;
 }
 

@@ -84,6 +84,12 @@ SDLaudio <- R6Class("SDLaudio",
   )
 )
 
+print.SDLaudio <- function(x, ...)
+{
+  print("SDLaudio object")
+  capture.output(x)
+}
+
 #' Get List of Audio Devices
 #' 
 #' return a character vector containg names of audio devices.
