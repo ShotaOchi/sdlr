@@ -74,7 +74,8 @@ class SDLAUDIO
     {
       if (SDL_Init(SDL_INIT_AUDIO) != 0)
       {
-        Rcpp::stop("failed to initialize SDL AUDIO.");
+        const std::string msg = SDL_GetError();
+        Rcpp::stop("failed to initialize SDL AUDIO.\n" + msg + "\n");
       }
       if (SDL_LoadWAV(file.c_str(), &spec, &buf, &len) == NULL)
       {
@@ -106,7 +107,8 @@ class SDLAUDIO
     {
       if (SDL_Init(SDL_INIT_AUDIO) != 0)
       {
-        Rcpp::stop("failed to initialize SDL AUDIO.");
+        const std::string msg = SDL_GetError();
+        Rcpp::stop("failed to initialize SDL AUDIO.\n" + msg + "\n");
       }
       if (SDL_LoadWAV(file.c_str(), &spec, &buf, &len) == NULL)
       {
@@ -124,7 +126,8 @@ class SDLAUDIO
     {
       if (SDL_Init(SDL_INIT_AUDIO) != 0)
       {
-        Rcpp::stop("failed to initialize SDL AUDIO.");
+        const std::string msg = SDL_GetError();
+        Rcpp::stop("failed to initialize SDL AUDIO.\n" + msg + "\n");
       }
       if (SDL_LoadWAV(file.c_str(), &spec, &buf, &len) == NULL)
       {
@@ -395,7 +398,8 @@ class SDLIMAGE
     {
       if (SDL_Init(SDL_INIT_VIDEO) < 0)
       {
-        Rcpp::stop("Failed to initialize SDL.");
+        const std::string msg = SDL_GetError();
+        Rcpp::stop("Failed to initialize SDL.\n" + msg + "\n");
       }
       if (colfmt == "RGB")
       {
@@ -416,7 +420,8 @@ class SDLIMAGE
     {
       if (SDL_Init(SDL_INIT_VIDEO) < 0)
       {
-        Rcpp::stop("Failed to initialize SDL.");
+        const std::string msg = SDL_GetError();
+        Rcpp::stop("Failed to initialize SDL.\n" + msg + "\n");
       }
       if (colfmt == "RGB")
       {
