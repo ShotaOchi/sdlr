@@ -6,7 +6,7 @@
 #include <SDL2/SDL_audio.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_render.h>
-#include <SDL2/SDL_Surface.h>
+#include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_video.h>
 
 #define SDLR_MINIMAL_WIDTH 200
