@@ -78,8 +78,8 @@ jobs:
       - name: Use xvfb on Linux and MacOS
         if: runner.os != 'Windows'
         run: |
-          Xvfb :99 &
           export DISPLAY=:99
+          Xvfb -ac :99 -screen 0 1600x1200x32 > /dev/null 2>&1 &
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
