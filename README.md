@@ -21,7 +21,7 @@ devtools::install_github("ShotaOchi/sdlr")
 ## Examples
 
 ### Audio
-we can use an R6 class SDLaudio to play audio.
+We can use an R6 class SDLaudio to play audio.
 ```r
 library(sdlr)
 path <- system.file("extdata", "train-whistle.wav", package = "sdlr")
@@ -29,6 +29,12 @@ path <- system.file("extdata", "train-whistle.wav", package = "sdlr")
 a <- SDLaudio$new(path)
 # play audio
 a$queue()
+```
+
+## Image
+We can display image.
+```r
+view(human)
 ```
 
 ### Video

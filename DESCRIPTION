@@ -7,17 +7,20 @@ Authors@R: c(
 Maintainer: Shota Ochi <shotaochi1990@gmail.com>
 Description: Offers R interface to video API and sound API of SDL2 library. 
 License: GPL-3
+Depends:
+    R (>= 3.5.0)
 Imports: 
     checkmate,
     Rcpp,
-    R6
+    R6,
+    utils
 Suggests: 
     testthat (>= 2.0.0)
 URL: https://github.com/ShotaOchi/sdlr
 BugReports: https://github.com/ShotaOchi/sdlr/issues
 NeedsCompilation: yes
 SystemRequirements: SDL2
-LinkingTo: Rcpp
 LazyData: true
+LinkingTo: Rcpp
 RoxygenNote: 7.2.3
 Encoding: UTF-8

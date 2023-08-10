@@ -37,3 +37,67 @@ queueSDLAUDIO <- function(ptr) {
     invisible(.Call(`_sdlr_queueSDLAUDIO`, ptr))
 }
 
+displaySDLRIMAGEnumeric <- function(vec, width, height, colfmt, chorder = "cxy", title = "", x = 0L, y = 0L, renderer_idx = 0L) {
+    invisible(.Call(`_sdlr_displaySDLRIMAGEnumeric`, vec, width, height, colfmt, chorder, title, x, y, renderer_idx))
+}
+
+displaySDLRIMAGEraw <- function(vec, width, height, colfmt, chorder = "cxy", title = "", x = 0L, y = 0L, renderer_idx = 0L) {
+    invisible(.Call(`_sdlr_displaySDLRIMAGEraw`, vec, width, height, colfmt, chorder, title, x, y, renderer_idx))
+}
+
+displaySDLRIMAGEnumericC <- function(vec, width, height, colfmt, chorder = "cxy", title = "", renderer_idx = 0L) {
+    invisible(.Call(`_sdlr_displaySDLRIMAGEnumericC`, vec, width, height, colfmt, chorder, title, renderer_idx))
+}
+
+displaySDLRIMAGErawC <- function(vec, width, height, colfmt, chorder = "cxy", title = "", renderer_idx = 0L) {
+    invisible(.Call(`_sdlr_displaySDLRIMAGErawC`, vec, width, height, colfmt, chorder, title, renderer_idx))
+}
+
+displaySDLRIMAGEnumericU <- function(vec, width, height, colfmt, chorder = "cxy", title = "", renderer_idx = 0L) {
+    invisible(.Call(`_sdlr_displaySDLRIMAGEnumericU`, vec, width, height, colfmt, chorder, title, renderer_idx))
+}
+
+displaySDLRIMAGErawU <- function(vec, width, height, colfmt, chorder = "cxy", title = "", renderer_idx = 0L) {
+    invisible(.Call(`_sdlr_displaySDLRIMAGErawU`, vec, width, height, colfmt, chorder, title, renderer_idx))
+}
+
+makeSDLRIMAGEnumeric <- function(vec, width, height, colfmt, chorder = "cxy", title = "", x = 0L, y = 0L, renderer_idx = 0L) {
+    .Call(`_sdlr_makeSDLRIMAGEnumeric`, vec, width, height, colfmt, chorder, title, x, y, renderer_idx)
+}
+
+makeSDLRIMAGEraw <- function(vec, width, height, colfmt, chorder = "cxy", title = "", x = 0L, y = 0L, renderer_idx = 0L) {
+    .Call(`_sdlr_makeSDLRIMAGEraw`, vec, width, height, colfmt, chorder, title, x, y, renderer_idx)
+}
+
+makeSDLRIMAGEnumericC <- function(vec, width, height, colfmt, chorder = "cxy", title = "", renderer_idx = 0L) {
+    .Call(`_sdlr_makeSDLRIMAGEnumericC`, vec, width, height, colfmt, chorder, title, renderer_idx)
+}
+
+makeSDLRIMAGErawC <- function(vec, width, height, colfmt, chorder = "cxy", title = "", renderer_idx = 0L) {
+    .Call(`_sdlr_makeSDLRIMAGErawC`, vec, width, height, colfmt, chorder, title, renderer_idx)
+}
+
+makeSDLRIMAGEnumericU <- function(vec, width, height, colfmt, chorder = "cxy", title = "", renderer_idx = 0L) {
+    .Call(`_sdlr_makeSDLRIMAGEnumericU`, vec, width, height, colfmt, chorder, title, renderer_idx)
+}
+
+makeSDLRIMAGErawU <- function(vec, width, height, colfmt, chorder = "cxy", title = "", renderer_idx = 0L) {
+    .Call(`_sdlr_makeSDLRIMAGErawU`, vec, width, height, colfmt, chorder, title, renderer_idx)
+}
+
+deleteSDLRIMAGE <- function(ptr) {
+    invisible(.Call(`_sdlr_deleteSDLRIMAGE`, ptr))
+}
+
+replaceSDLRIMAGEraw <- function(ptr, vec, width, height, colfmt, chorder) {
+    invisible(.Call(`_sdlr_replaceSDLRIMAGEraw`, ptr, vec, width, height, colfmt, chorder))
+}
+
+replaceSDLRIMAGEnumeric <- function(ptr, vec, width, height, colfmt, chorder) {
+    invisible(.Call(`_sdlr_replaceSDLRIMAGEnumeric`, ptr, vec, width, height, colfmt, chorder))
+}
+
+SDLR_QUIT <- function() {
+    invisible(.Call(`_sdlr_SDLR_QUIT`))
+}
+

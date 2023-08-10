@@ -107,6 +107,261 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// displaySDLRIMAGEnumeric
+void displaySDLRIMAGEnumeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx);
+RcppExport SEXP _sdlr_displaySDLRIMAGEnumeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const int >::type y(ySEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    displaySDLRIMAGEnumeric(vec, width, height, colfmt, chorder, title, x, y, renderer_idx);
+    return R_NilValue;
+END_RCPP
+}
+// displaySDLRIMAGEraw
+void displaySDLRIMAGEraw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx);
+RcppExport SEXP _sdlr_displaySDLRIMAGEraw(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const int >::type y(ySEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    displaySDLRIMAGEraw(vec, width, height, colfmt, chorder, title, x, y, renderer_idx);
+    return R_NilValue;
+END_RCPP
+}
+// displaySDLRIMAGEnumericC
+void displaySDLRIMAGEnumericC(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx);
+RcppExport SEXP _sdlr_displaySDLRIMAGEnumericC(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    displaySDLRIMAGEnumericC(vec, width, height, colfmt, chorder, title, renderer_idx);
+    return R_NilValue;
+END_RCPP
+}
+// displaySDLRIMAGErawC
+void displaySDLRIMAGErawC(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx);
+RcppExport SEXP _sdlr_displaySDLRIMAGErawC(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    displaySDLRIMAGErawC(vec, width, height, colfmt, chorder, title, renderer_idx);
+    return R_NilValue;
+END_RCPP
+}
+// displaySDLRIMAGEnumericU
+void displaySDLRIMAGEnumericU(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx);
+RcppExport SEXP _sdlr_displaySDLRIMAGEnumericU(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    displaySDLRIMAGEnumericU(vec, width, height, colfmt, chorder, title, renderer_idx);
+    return R_NilValue;
+END_RCPP
+}
+// displaySDLRIMAGErawU
+void displaySDLRIMAGErawU(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx);
+RcppExport SEXP _sdlr_displaySDLRIMAGErawU(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    displaySDLRIMAGErawU(vec, width, height, colfmt, chorder, title, renderer_idx);
+    return R_NilValue;
+END_RCPP
+}
+// makeSDLRIMAGEnumeric
+Rcpp::XPtr<SDLRIMAGE> makeSDLRIMAGEnumeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx);
+RcppExport SEXP _sdlr_makeSDLRIMAGEnumeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const int >::type y(ySEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(makeSDLRIMAGEnumeric(vec, width, height, colfmt, chorder, title, x, y, renderer_idx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// makeSDLRIMAGEraw
+Rcpp::XPtr<SDLRIMAGE> makeSDLRIMAGEraw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx);
+RcppExport SEXP _sdlr_makeSDLRIMAGEraw(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const int >::type y(ySEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(makeSDLRIMAGEraw(vec, width, height, colfmt, chorder, title, x, y, renderer_idx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// makeSDLRIMAGEnumericC
+Rcpp::XPtr<SDLRIMAGE> makeSDLRIMAGEnumericC(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx);
+RcppExport SEXP _sdlr_makeSDLRIMAGEnumericC(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(makeSDLRIMAGEnumericC(vec, width, height, colfmt, chorder, title, renderer_idx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// makeSDLRIMAGErawC
+Rcpp::XPtr<SDLRIMAGE> makeSDLRIMAGErawC(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx);
+RcppExport SEXP _sdlr_makeSDLRIMAGErawC(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(makeSDLRIMAGErawC(vec, width, height, colfmt, chorder, title, renderer_idx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// makeSDLRIMAGEnumericU
+Rcpp::XPtr<SDLRIMAGE> makeSDLRIMAGEnumericU(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx);
+RcppExport SEXP _sdlr_makeSDLRIMAGEnumericU(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(makeSDLRIMAGEnumericU(vec, width, height, colfmt, chorder, title, renderer_idx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// makeSDLRIMAGErawU
+Rcpp::XPtr<SDLRIMAGE> makeSDLRIMAGErawU(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx);
+RcppExport SEXP _sdlr_makeSDLRIMAGErawU(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
+    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(makeSDLRIMAGErawU(vec, width, height, colfmt, chorder, title, renderer_idx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// deleteSDLRIMAGE
+void deleteSDLRIMAGE(Rcpp::XPtr<SDLRIMAGE> ptr);
+RcppExport SEXP _sdlr_deleteSDLRIMAGE(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<SDLRIMAGE> >::type ptr(ptrSEXP);
+    deleteSDLRIMAGE(ptr);
+    return R_NilValue;
+END_RCPP
+}
+// replaceSDLRIMAGEraw
+void replaceSDLRIMAGEraw(Rcpp::XPtr<SDLRIMAGE> ptr, const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder);
+RcppExport SEXP _sdlr_replaceSDLRIMAGEraw(SEXP ptrSEXP, SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<SDLRIMAGE> >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    replaceSDLRIMAGEraw(ptr, vec, width, height, colfmt, chorder);
+    return R_NilValue;
+END_RCPP
+}
+// replaceSDLRIMAGEnumeric
+void replaceSDLRIMAGEnumeric(Rcpp::XPtr<SDLRIMAGE> ptr, const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder);
+RcppExport SEXP _sdlr_replaceSDLRIMAGEnumeric(SEXP ptrSEXP, SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<SDLRIMAGE> >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
+    replaceSDLRIMAGEnumeric(ptr, vec, width, height, colfmt, chorder);
+    return R_NilValue;
+END_RCPP
+}
+// SDLR_QUIT
+void SDLR_QUIT();
+RcppExport SEXP _sdlr_SDLR_QUIT() {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    SDLR_QUIT();
+    return R_NilValue;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_sdlr_getAudioDevicesCpp", (DL_FUNC) &_sdlr_getAudioDevicesCpp, 0},
@@ -118,6 +373,22 @@ static const R_CallMethodDef CallEntries[] = {
     {"_sdlr_pauseSDLAUDIO", (DL_FUNC) &_sdlr_pauseSDLAUDIO, 1},
     {"_sdlr_unpauseSDLAUDIO", (DL_FUNC) &_sdlr_unpauseSDLAUDIO, 1},
     {"_sdlr_queueSDLAUDIO", (DL_FUNC) &_sdlr_queueSDLAUDIO, 1},
+    {"_sdlr_displaySDLRIMAGEnumeric", (DL_FUNC) &_sdlr_displaySDLRIMAGEnumeric, 9},
+    {"_sdlr_displaySDLRIMAGEraw", (DL_FUNC) &_sdlr_displaySDLRIMAGEraw, 9},
+    {"_sdlr_displaySDLRIMAGEnumericC", (DL_FUNC) &_sdlr_displaySDLRIMAGEnumericC, 7},
+    {"_sdlr_displaySDLRIMAGErawC", (DL_FUNC) &_sdlr_displaySDLRIMAGErawC, 7},
+    {"_sdlr_displaySDLRIMAGEnumericU", (DL_FUNC) &_sdlr_displaySDLRIMAGEnumericU, 7},
+    {"_sdlr_displaySDLRIMAGErawU", (DL_FUNC) &_sdlr_displaySDLRIMAGErawU, 7},
+    {"_sdlr_makeSDLRIMAGEnumeric", (DL_FUNC) &_sdlr_makeSDLRIMAGEnumeric, 9},
+    {"_sdlr_makeSDLRIMAGEraw", (DL_FUNC) &_sdlr_makeSDLRIMAGEraw, 9},
+    {"_sdlr_makeSDLRIMAGEnumericC", (DL_FUNC) &_sdlr_makeSDLRIMAGEnumericC, 7},
+    {"_sdlr_makeSDLRIMAGErawC", (DL_FUNC) &_sdlr_makeSDLRIMAGErawC, 7},
+    {"_sdlr_makeSDLRIMAGEnumericU", (DL_FUNC) &_sdlr_makeSDLRIMAGEnumericU, 7},
+    {"_sdlr_makeSDLRIMAGErawU", (DL_FUNC) &_sdlr_makeSDLRIMAGErawU, 7},
+    {"_sdlr_deleteSDLRIMAGE", (DL_FUNC) &_sdlr_deleteSDLRIMAGE, 1},
+    {"_sdlr_replaceSDLRIMAGEraw", (DL_FUNC) &_sdlr_replaceSDLRIMAGEraw, 6},
+    {"_sdlr_replaceSDLRIMAGEnumeric", (DL_FUNC) &_sdlr_replaceSDLRIMAGEnumeric, 6},
+    {"_sdlr_SDLR_QUIT", (DL_FUNC) &_sdlr_SDLR_QUIT, 0},
     {NULL, NULL, 0}
 };
 
