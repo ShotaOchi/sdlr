@@ -115,7 +115,7 @@ SDLimage <- R6Class("SDLimage",
     #$' @param title title of window.
     #$' @param renderer_idx number of rendering drived to be initialized.
     #$' @return a new SDLimage object.
-    initialize = function(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = 0)
+    initialize = function(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = -1)
     {
       assert_image(img)
       assert_pos(pos)
