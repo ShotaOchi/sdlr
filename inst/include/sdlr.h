@@ -52,10 +52,10 @@ inline void SDLR_wait(SDL_Window* window, SDL_Event event, Uint64 wait_time = 1)
         SDL_SetWindowPosition(window, window_x + tmp_x - mouse_x, window_y + tmp_y - mouse_y);
         SDL_GetGlobalMouseState(&mouse_x, &mouse_y);
       }
-      if(!is_interactive)
-      {
-        break;
-      }
+    }
+    if(!is_interactive)
+    {
+      break;
     }
   }
 }
