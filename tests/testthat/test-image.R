@@ -1,5 +1,8 @@
 test_that("image",
 {
+
+  expect(interactive == false, "the r session is interactive...")
+
   dimhuman <- dim(human)
   dimxyc <- c(dimhuman[2:3], dimhuman[1])
   
