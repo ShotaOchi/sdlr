@@ -3,6 +3,11 @@ assert_idx <- function(idx)
   assert_number(idx, lower = 0, finite = TRUE)
 }
 
+assert_idx_renderer <- function(idx)
+{
+  assert_number(idx, lower = -1, finite = TRUE)
+}
+
 assert_image <- function(img)
 {
   assert_array(img, any.missing = FALSE, min.d = 2, max.d = 3)

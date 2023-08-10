@@ -11,7 +11,7 @@
 
 #define SDLR_MINIMAL_WIDTH 200
 
-inline void SDLR_wait(SDL_Window* window, SDL_Event event, Uint64 wait_time = 1)
+inline void SDLR_wait(SDL_Window* window, SDL_Event event, Uint32 wait_time = 1)
 {
   int window_x;
   int window_y;
@@ -20,7 +20,7 @@ inline void SDLR_wait(SDL_Window* window, SDL_Event event, Uint64 wait_time = 1)
   bool dragged = false;
   Rcpp::Function f("interactive");
   bool is_interactive = f();
-  Uint64 prev_time = SDL_GetTicks64();
+  Uint32 prev_time = SDL_GetTicks();
   while(true)
   {
     if (SDL_PollEvent(&event) == 0)
@@ -41,9 +41,9 @@ inline void SDLR_wait(SDL_Window* window, SDL_Event event, Uint64 wait_time = 1)
     {
       break;
     }
-    if (dragged && SDL_GetTicks64() > prev_time + wait_time)
+    if (dragged && SDL_GetTicks() > prev_time + wait_time)
     {
-      prev_time = SDL_GetTicks64();
+      prev_time = SDL_GetTicks();
       int tmp_x, tmp_y;
       SDL_GetGlobalMouseState(&tmp_x, &tmp_y);
       if (mouse_x != tmp_x || mouse_y != tmp_y)

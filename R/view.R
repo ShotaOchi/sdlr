@@ -6,12 +6,12 @@
 #' @param title title of window.
 #' @param renderer_idx number of rendering drived to be initialized.
 #' @export
-view <- function(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = 0)
+view <- function(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = -1)
 {
   assert_image(img)
   assert_pos(pos)
   assert_name(title)
-  assert_idx(renderer_idx)
+  assert_idx_renderer(renderer_idx)
   dim_img <- dim(img)
   if (length(dim_img) == 2)
   {

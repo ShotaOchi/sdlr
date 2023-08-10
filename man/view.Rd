@@ -4,7 +4,7 @@
 \alias{view}
 \title{Display an image.}
 \usage{
-view(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = 0)
+view(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = -1)
 }
 \arguments{
 \item{img}{an array that represents image.}
