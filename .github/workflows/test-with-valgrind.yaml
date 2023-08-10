@@ -60,6 +60,11 @@ jobs:
           sudo apt install -y  libsdl2-dev valgrind pulseaudio libportaudio2 dbus-x11
           dbus-launch pulseaudio --start
 
+      - name: Use xvfb
+        run: |
+          Xvfb :99 &
+          export DISPLAY=:99
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck

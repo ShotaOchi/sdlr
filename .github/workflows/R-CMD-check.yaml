@@ -75,6 +75,12 @@ jobs:
           pacman -Sy --noconfirm mingw-w64-i686-SDL2
           pacman -Sy --noconfirm mingw-w64-ucrt-x86_64-SDL2
 
+      - name: Use xvfb on Linux and MacOS
+        if: runner.os != 'Windows'
+        run: |
+          Xvfb :99 &
+          export DISPLAY=:99
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
