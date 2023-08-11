@@ -85,8 +85,8 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           export DISPLAY=:0.0
-          Xvfb -ac :0.0 -screen 0 1600x1200x32 > /dev/null 2>&1 &
-          xhost + localhost
+          Xvfb -ac :0 -screen 0 1600x1200x32 > /dev/null 2>&1 &
+          xhost +
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
