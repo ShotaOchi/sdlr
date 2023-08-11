@@ -11,14 +11,14 @@
 
 #define SDLR_MINIMAL_WIDTH 200
 
-inline void SDLR_wait(SDL_Window* window, SDL_Event event, const int max_count = -1, const Uint32 wait_time = 1)
+inline void SDLR_wait(SDL_Window* window, SDL_Event event, const int max_count = -1, const Uint64 wait_time = 1)
 {
   int window_x;
   int window_y;
   int mouse_x = 0;
   int mouse_y = 0;
   bool dragged = false;
-  Uint32 prev_time = SDL_GetTicks();
+  Uint64 prev_time = SDL_GetTicks64();
   int count = 0;
   while(true)
   {
@@ -49,9 +49,9 @@ inline void SDLR_wait(SDL_Window* window, SDL_Event event, const int max_count =
     {
       break;
     }
-    if (dragged && (SDL_TICKS_PASSED(prev_time, wait_time)))
+    if (dragged && SDL_GetTicks64() >= prev_time + wait_time)
     {
-      prev_time = SDL_GetTicks();
+      prev_time = SDL_GetTicks64();
       int tmp_x, tmp_y;
       SDL_GetGlobalMouseState(&tmp_x, &tmp_y);
       if (mouse_x != tmp_x || mouse_y != tmp_y)
