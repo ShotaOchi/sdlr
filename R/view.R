@@ -120,7 +120,7 @@ SDLimage <- R6Class("SDLimage",
       assert_image(img)
       assert_pos(pos)
       assert_name(title)
-      assert_idx(renderer_idx)
+      assert_idx_renderer(renderer_idx)
       dim_img <- dim(img)
       if (length(dim_img) == 2)
       {
