@@ -19,7 +19,7 @@ Suggests:
 URL: https://github.com/ShotaOchi/sdlr
 BugReports: https://github.com/ShotaOchi/sdlr/issues
 NeedsCompilation: yes
-SystemRequirements: SDL2
+SystemRequirements: SDL2; MacOS Homebrew: sdl2. Debian/Ubuntu: libsdl2-dev. Fedora/CentOS: SDL2-devel
 LazyData: true
 LinkingTo: Rcpp
 RoxygenNote: 7.2.3
