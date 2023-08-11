@@ -51,7 +51,6 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
       - name: Install system dependencies
-        if: runner.os == 'Linux'
         run: |
           while read -r cmd
           do
@@ -59,6 +58,20 @@ jobs:
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
           sudo apt install -y  libsdl2-dev pulseaudio libportaudio2 dbus-x11 xorg xorg-dev
           dbus-launch pulseaudio --start
+
+      - name: Build SDL2
+        run: |
+          sudo apt-get purge libsdl2*
+          sudo apt-get install -y libdrm2 libpulse0 libgbm1 libwayland-client0 libwayland-cursor0 libwayland-egl1 libx11-6 libxcursor1 libxext6 libxfixes3 libxi6 libxinerama1 libxkbcommon0 libxrandr2 libxss1 libxxf86vm1 xdg-utils libasound2-dev libdbus-1-dev libdrm-dev libegl-dev libegl1-mesa-dev libgbm-dev libgl-dev libgl1-mesa-dev libgles-dev libgles2-mesa-dev libglu1-mesa-dev libibus-1.0-dev libpulse-dev libsamplerate0-dev libsndio-dev libudev-dev libwayland-dev libx11-dev libxcursor-dev libxext-dev libxfixes-dev libxi-dev libxinerama-dev libxkbcommon-dev libxrandr-dev libxss-dev libxt-dev libxv-dev libxxf86vm-dev pkg-config
+          cd ..
+          git clone https://github.com/libsdl-org/SDL.git -b SDL2
+          cd SDL
+          mkdir build
+          cd build
+          ../configure
+          make
+          sudo make install
+          cd ../../sdlr
 
       - name: Use xvfb
         run: |
