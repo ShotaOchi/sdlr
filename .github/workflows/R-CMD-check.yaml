@@ -22,7 +22,7 @@ jobs:
         config:
           - {os: windows-latest, r: 'release'}
           - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-22.04, r: 'release'}
+          - {os: ubuntu-20.04, r: 'release'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -64,8 +64,8 @@ jobs:
           while read -r cmd
           do
             eval sudo $cmd
-          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "22.04"))')
-          sudo apt-get install -y libsdl2 libsdl2-dev pulseaudio libportaudio2 dbus-x11 xorg xorg-dev xserver-xorg-core xserver-xorg
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
+          sudo apt-get install -y libsdl2-2.0-0 libsdl2-dev pulseaudio libportaudio2 dbus-x11 xorg xorg-dev xserver-xorg-core xserver-xorg
           dbus-launch pulseaudio --start
 
       - name: Install System Requirements on Windows
