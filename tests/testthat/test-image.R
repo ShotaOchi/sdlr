@@ -90,6 +90,17 @@ test_that("image",
   expect_no_error(view(xycrgbabighuman, chorder = "xyc"))
   expect_no_error(view(xycrgbanumbighuman, chorder = "xyc"))
   
+  expect_error(view("vasdvasd"))
+  expect_error(view(human, pos = Inf))
+  expect_error(view(human, pos = "vsavda"))
+  expect_error(view(human, pos = FALSE))
+  expect_error(view(array(0, dim = c(5,100,100))))
+  expect_error(view(array(0, dim = c(100,100,5)), chorder = "xyc"))
+  expect_no_error(view(array(0.5, dim = c(3, 100,100))))
+  expect_no_error(view(array(0, dim = c(3, 100,100)), pos = c(0,0)))
+  expect_no_error(view(array(0, dim = c(3, 100,100)), pos = "centered"))
+  expect_no_error(view(array(as.raw(0), dim = c(3, 100,100)), pos = c(0,0)))
+  expect_no_error(view(array(as.raw(0), dim = c(3, 100,100)), pos = "centered"))
   
   a <- sdlr:::SDLimage$new(human)
   expect_no_error(a$replace(array(0, dim = dimhuman[2:3])))
