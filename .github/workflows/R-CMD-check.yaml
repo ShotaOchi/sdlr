@@ -75,17 +75,24 @@ jobs:
           pacman -Sy --noconfirm mingw-w64-i686-SDL2
           pacman -Sy --noconfirm mingw-w64-ucrt-x86_64-SDL2
 
-      - name: Use xvfb on MacOS
-        if: runner.os == 'macOS'
+      - name: Build SDL2 on Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get purge libsdl2*
+          sudo apt-get build-dep libsdl2-2.0-0
+          git clone https://github.com/libsdl-org/SDL
+          cd SDL
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release --parallel
+          sudo cmake --install . --config Release
+
+      - name: Use xvfb on Linux and MacOS
+        if: runner.os != 'Windows'
         run: |
           export DISPLAY=:99
           Xvfb -ac :99 -screen 0 1600x1200x32 > /dev/null 2>&1 &
-
-      - name: Use xvfb on Linux
-        if: runner.os == 'Linux'
-        run: |
-          export DISPLAY=:0.0
-          Xvfb -ac :0 -screen 0 1600x1200x32 > /dev/null 2>&1 &
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
