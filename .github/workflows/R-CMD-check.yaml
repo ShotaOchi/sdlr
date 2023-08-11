@@ -82,7 +82,7 @@ jobs:
           Xvfb -ac :99 -screen 0 1600x1200x32 > /dev/null 2>&1 &
 
       - name: Use xserver-xorg-video-dummy on Linux
-        if: runner.os = 'Linux'
+        if: runner.os == 'Linux'
         run: |
           sudo apt install -y xserver-xorg-video-dummy
           sudo touch dummy-1920x1080.conf
