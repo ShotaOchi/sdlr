@@ -86,7 +86,7 @@ jobs:
         run: |
           sudo apt-get install -y xserver-xorg-video-dummy
           sudo touch dummy-1920x1080.conf
-          echo Section \"Monitor\"\n  Identifier \"Monitor0\"\n  HorizSync 28.0-80.0\n  VertRefresh 48.0-75.0\n  # https://arachnoid.com/modelines/\n  # 1920x1080 @ 60.00 Hz (GTF) hsync: 67.08 kHz; pclk: 172.80 MHz\n  Modeline \"1920x1080_60.00\" 172.80 1920 2040 2248 2576 1080 1081 1084 1118 -HSync +Vsync\nEndSection\nSection \"Device\"\n  Identifier \"Card0\"\n  Driver \"dummy\"\n  VideoRam 256000\nEndSection\nSection \"Screen\"\n  DefaultDepth 24\n  Identifier \"Screen0\"\n  Device \"Card0\"\n  Monitor \"Monitor0\"\n  SubSection \"Display\"\n    Depth 24\n    Modes \"1920x1080_60.00\"\n  EndSubSection\nEndSection\n > dummy-1920x1080.conf
+          echo -e Section \"Monitor\"\n  Identifier \"Monitor0\"\n  HorizSync 28.0-80.0\n  VertRefresh 48.0-75.0\n  # https://arachnoid.com/modelines/\n  # 1920x1080 @ 60.00 Hz (GTF) hsync: 67.08 kHz; pclk: 172.80 MHz\n  Modeline \"1920x1080_60.00\" 172.80 1920 2040 2248 2576 1080 1081 1084 1118 -HSync +Vsync\nEndSection\nSection \"Device\"\n  Identifier \"Card0\"\n  Driver \"dummy\"\n  VideoRam 256000\nEndSection\nSection \"Screen\"\n  DefaultDepth 24\n  Identifier \"Screen0\"\n  Device \"Card0\"\n  Monitor \"Monitor0\"\n  SubSection \"Display\"\n    Depth 24\n    Modes \"1920x1080_60.00\"\n  EndSubSection\nEndSection\n > dummy-1920x1080.conf
           Xorg :0 -configure
           sudo mv /root/xorg.conf.new /usr/share/X11/xorg.conf.d/xorg.conf
           sudo X -config dummy-1920x1080.conf
