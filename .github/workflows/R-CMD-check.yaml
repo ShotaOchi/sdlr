@@ -76,7 +76,7 @@ jobs:
           pacman -Sy --noconfirm mingw-w64-ucrt-x86_64-SDL2
 
       - name: Use xvfb on MacOS
-        if: runner.os = 'macOS'
+        if: runner.os == 'macOS'
         run: |
           export DISPLAY=:99
           Xvfb -ac :99 -screen 0 1600x1200x32 > /dev/null 2>&1 &
