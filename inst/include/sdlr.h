@@ -44,7 +44,7 @@ inline void SDLR_wait(SDL_Window* window, SDL_Event event, const int max_count =
       dragged = false;
     } else if(event.type == SDL_QUIT)
     {
-       break;
+      break;
     } else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_q)
     {
       break;
