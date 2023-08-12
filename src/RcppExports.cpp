@@ -145,74 +145,6 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// displaySDLRIMAGEnumericC
-void displaySDLRIMAGEnumericC(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx, const int max_count);
-RcppExport SEXP _sdlr_displaySDLRIMAGEnumericC(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP, SEXP max_countSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
-    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
-    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
-    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
-    Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    displaySDLRIMAGEnumericC(vec, width, height, colfmt, chorder, title, renderer_idx, max_count);
-    return R_NilValue;
-END_RCPP
-}
-// displaySDLRIMAGErawC
-void displaySDLRIMAGErawC(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx, const int max_count);
-RcppExport SEXP _sdlr_displaySDLRIMAGErawC(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP, SEXP max_countSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
-    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
-    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
-    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
-    Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    displaySDLRIMAGErawC(vec, width, height, colfmt, chorder, title, renderer_idx, max_count);
-    return R_NilValue;
-END_RCPP
-}
-// displaySDLRIMAGEnumericU
-void displaySDLRIMAGEnumericU(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx, const int max_count);
-RcppExport SEXP _sdlr_displaySDLRIMAGEnumericU(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP, SEXP max_countSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type vec(vecSEXP);
-    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
-    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
-    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
-    Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    displaySDLRIMAGEnumericU(vec, width, height, colfmt, chorder, title, renderer_idx, max_count);
-    return R_NilValue;
-END_RCPP
-}
-// displaySDLRIMAGErawU
-void displaySDLRIMAGErawU(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int renderer_idx, const int max_count);
-RcppExport SEXP _sdlr_displaySDLRIMAGErawU(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP renderer_idxSEXP, SEXP max_countSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Rcpp::RawVector& >::type vec(vecSEXP);
-    Rcpp::traits::input_parameter< const int >::type width(widthSEXP);
-    Rcpp::traits::input_parameter< const int >::type height(heightSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type colfmt(colfmtSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type chorder(chorderSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type title(titleSEXP);
-    Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
-    Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    displaySDLRIMAGErawU(vec, width, height, colfmt, chorder, title, renderer_idx, max_count);
-    return R_NilValue;
-END_RCPP
-}
 // makeSDLRIMAGEnumeric
 Rcpp::XPtr<SDLRIMAGE> makeSDLRIMAGEnumeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx);
 RcppExport SEXP _sdlr_makeSDLRIMAGEnumeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP) {
@@ -381,10 +313,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_sdlr_queueSDLAUDIO", (DL_FUNC) &_sdlr_queueSDLAUDIO, 1},
     {"_sdlr_displaySDLRIMAGEnumeric", (DL_FUNC) &_sdlr_displaySDLRIMAGEnumeric, 10},
     {"_sdlr_displaySDLRIMAGEraw", (DL_FUNC) &_sdlr_displaySDLRIMAGEraw, 10},
-    {"_sdlr_displaySDLRIMAGEnumericC", (DL_FUNC) &_sdlr_displaySDLRIMAGEnumericC, 8},
-    {"_sdlr_displaySDLRIMAGErawC", (DL_FUNC) &_sdlr_displaySDLRIMAGErawC, 8},
-    {"_sdlr_displaySDLRIMAGEnumericU", (DL_FUNC) &_sdlr_displaySDLRIMAGEnumericU, 8},
-    {"_sdlr_displaySDLRIMAGErawU", (DL_FUNC) &_sdlr_displaySDLRIMAGErawU, 8},
     {"_sdlr_makeSDLRIMAGEnumeric", (DL_FUNC) &_sdlr_makeSDLRIMAGEnumeric, 9},
     {"_sdlr_makeSDLRIMAGEraw", (DL_FUNC) &_sdlr_makeSDLRIMAGEraw, 9},
     {"_sdlr_makeSDLRIMAGEnumericC", (DL_FUNC) &_sdlr_makeSDLRIMAGEnumericC, 7},

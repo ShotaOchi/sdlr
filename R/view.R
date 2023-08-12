@@ -65,35 +65,20 @@ view <- function(img, pos = "undefined", chorder = "cxy", title = "", renderer_i
       height <- dim_img[2]
     }
   }
-  
+  if (is.character(pos))
+  {
+    pos <- ifelse(pos == "undefined", c(-1,-1), c(-2,-2))
+  }
   if (is.numeric(img))
   {
     if (max(img) <= 1)
     {
       img <- 255 * img
     }
-    if (is.numeric(pos))
-    {
-      displaySDLRIMAGEnumeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, max_count = max_count)
-    } else if (pos == "undefined")
-    {
-      displaySDLRIMAGEnumericU(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx, max_count = max_count)
-    } else
-    {
-      displaySDLRIMAGEnumericC(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx, max_count = max_count)
-    }
+    displaySDLRIMAGEnumeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, max_count = max_count)
   } else
   {
-    if (is.numeric(pos))
-    {
-      displaySDLRIMAGEraw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, max_count = max_count)
-    } else if (pos == "undefined")
-    {
-      displaySDLRIMAGErawU(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx, max_count = max_count)
-    } else
-    {
-      displaySDLRIMAGErawC(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, renderer_idx = renderer_idx, max_count = max_count)
-    }
+    displaySDLRIMAGEraw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, max_count = max_count)
   }
 }
 
