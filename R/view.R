@@ -1,10 +1,16 @@
 #' Display an image.
 #' 
-#' @param img an array that represents image.
+#' Display an image that is represented by a numeric array or a raw array.
+#' @param img an array that represents an image.
 #' @param pos position of window. a numeric vector that represents position, "centered", or "undefined".
 #' @param chorder channel order of image. "cxy" or "xyc".
 #' @param title title of window.
-#' @param renderer_idx number of rendering drived to be initialized.
+#' @param renderer_idx number of rendering device to be initialized.
+#' @examples
+#' if (interactive())
+#' {
+#'   view(human)
+#' }
 #' @export
 view <- function(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = -1)
 {

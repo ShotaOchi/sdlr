@@ -7,7 +7,7 @@
 view(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = -1)
 }
 \arguments{
-\item{img}{an array that represents image.}
+\item{img}{an array that represents an image.}
 
 \item{pos}{position of window. a numeric vector that represents position, "centered", or "undefined".}
 
@@ -15,8 +15,14 @@ view(img, pos = "undefined", chorder = "cxy", title = "", renderer_idx = -1)
 
 \item{title}{title of window.}
 
-\item{renderer_idx}{number of rendering drived to be initialized.}
+\item{renderer_idx}{number of rendering device to be initialized.}
 }
 \description{
-Display an image.
+Display an image that is represented by a numeric array or a raw array.
+}
+\examples{
+if (interactive())
+{
+  view(human)
+}
 }
