@@ -37,6 +37,13 @@ We can display image.
 view(human)
 ```
 
+We can select points, lines, rectangles from image interactively.
+```r
+pick(human)
+pick(human, type = "line")
+pick(human, type = "rect")
+```
+
 ### Video
 not implemented yet...
 
