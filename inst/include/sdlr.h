@@ -26,7 +26,7 @@ inline void SDLR_wait(SDL_Window* window, SDL_Event event, const int max_count =
     {
       if (max_count >= 0)
       {
-        count += 1;
+        ++count;
         if (count >= max_count)
         {
           break;

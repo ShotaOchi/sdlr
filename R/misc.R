@@ -1,6 +1,7 @@
 #' @useDynLib sdlr, .registration=TRUE
 #' @importFrom checkmate assert_array
 #' @importFrom checkmate assert_character
+#' @importFrom checkmate assert_flag
 #' @importFrom checkmate assert_file
 #' @importFrom checkmate assert_number
 #' @importFrom checkmate assert_numeric
