@@ -16,6 +16,7 @@ void displaySDLRIMAGEnumeric(const Rcpp::NumericVector& vec, const int width, co
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
     SDLR_wait(img.window, img.event, max_count);
   }
+  SDL_QuitSubSystem(SDL_INIT_VIDEO);
 }
 
 // [[Rcpp::export]]
@@ -34,6 +35,7 @@ void displaySDLRIMAGEraw(const Rcpp::RawVector& vec, const int width, const int 
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
     SDLR_wait(img.window, img.event, max_count);
   }
+  SDL_QuitSubSystem(SDL_INIT_VIDEO);
 }
 
 // [[Rcpp::export]]
