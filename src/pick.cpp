@@ -103,7 +103,7 @@ Rcpp::DataFrame SDLR_pick_point(SDL_Window* window, SDL_Renderer* renderer, SDL_
   return Rcpp::DataFrame::create(Rcpp::Named("x") = vecx, Rcpp::Named("y") = vecy);
 }
 
-Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1, const Uint64 wait_time = 1)
+Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1, const Uint32 wait_time = 1)
 {
   if (mark)
   {
@@ -133,7 +133,7 @@ Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_T
   bool dragged = false;
   int start_x = 0;
   int start_y = 0;
-  Uint64 prev_time = SDL_GetTicks64();
+  Uint32 prev_time = SDL_GetTicks();
   SDL_RaiseWindow(window);
   while(true)
   {
@@ -233,9 +233,9 @@ Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_T
     {
       break;
     }
-    if (dragged && SDL_GetTicks64() >= prev_time + wait_time)
+    if (dragged && SDL_TICKS_PASSED(SDL_GetTicks(), prev_time + wait_time))
     {
-      prev_time = SDL_GetTicks64();
+      prev_time = SDL_GetTicks();
       int tmp_x, tmp_y;
       SDL_GetGlobalMouseState(&tmp_x, &tmp_y);
       SDL_GetWindowPosition(window, &window_x, &window_y);
@@ -272,7 +272,7 @@ Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_T
   return Rcpp::DataFrame::create(Rcpp::Named("start_x") = vec_start_x, Rcpp::Named("start_y") = vec_start_y, Rcpp::Named("end_x") = vec_end_x, Rcpp::Named("end_y") = vec_end_y);
 }
 
-Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1, const Uint64 wait_time = 1)
+Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1, const Uint32 wait_time = 1)
 {
   if (mark)
   {
@@ -307,7 +307,7 @@ Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_T
   rect.y = 0;
   rect.w = 0;
   rect.h = 0;
-  Uint64 prev_time = SDL_GetTicks64();
+  Uint32 prev_time = SDL_GetTicks();
   SDL_RaiseWindow(window);
   while(true)
   {
@@ -432,9 +432,9 @@ Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_T
     {
       break;
     }
-    if (dragged && SDL_GetTicks64() >= prev_time + wait_time)
+    if (dragged && SDL_TICKS_PASSED(SDL_GetTicks(), prev_time + wait_time))
     {
-      prev_time = SDL_GetTicks64();
+      prev_time = SDL_GetTicks();
       int tmp_x, tmp_y;
       SDL_GetGlobalMouseState(&tmp_x, &tmp_y);
       SDL_GetWindowPosition(window, &window_x, &window_y);
