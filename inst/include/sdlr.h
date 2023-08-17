@@ -11,7 +11,7 @@
 
 #define SDLR_MINIMAL_WIDTH 200
 
-inline void SDLR_wait(SDL_Window* window, SDL_Event event, const int max_count = -1, const Uint32 wait_time = 1)
+inline void SDLR_Wait(SDL_Window* window, SDL_Event event, const int max_count = -1, const Uint32 wait_time = 1)
 {
   int window_x;
   int window_y;
