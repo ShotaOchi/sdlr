@@ -31,7 +31,7 @@ a <- SDLaudio$new(path)
 a$queue()
 ```
 
-## Image
+### Image
 You can display image.
 ```r
 view(human)
