@@ -12,8 +12,8 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // pick_point_raw
-Rcpp::DataFrame pick_point_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const Rcpp::NumericVector color, const int max_count);
-RcppExport SEXP _sdlr_pick_point_raw(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
+Rcpp::DataFrame pick_point_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const int size, const Rcpp::NumericVector color, const int max_count);
+RcppExport SEXP _sdlr_pick_point_raw(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP sizeSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -28,15 +28,16 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
     Rcpp::traits::input_parameter< const int >::type n(nSEXP);
     Rcpp::traits::input_parameter< const bool >::type mark(markSEXP);
+    Rcpp::traits::input_parameter< const int >::type size(sizeSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type color(colorSEXP);
     Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    rcpp_result_gen = Rcpp::wrap(pick_point_raw(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, color, max_count));
+    rcpp_result_gen = Rcpp::wrap(pick_point_raw(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, size, color, max_count));
     return rcpp_result_gen;
 END_RCPP
 }
 // pick_point_numeric
-Rcpp::DataFrame pick_point_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const Rcpp::NumericVector color, const int max_count);
-RcppExport SEXP _sdlr_pick_point_numeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
+Rcpp::DataFrame pick_point_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const int size, const Rcpp::NumericVector color, const int max_count);
+RcppExport SEXP _sdlr_pick_point_numeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP sizeSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -51,15 +52,16 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
     Rcpp::traits::input_parameter< const int >::type n(nSEXP);
     Rcpp::traits::input_parameter< const bool >::type mark(markSEXP);
+    Rcpp::traits::input_parameter< const int >::type size(sizeSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type color(colorSEXP);
     Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    rcpp_result_gen = Rcpp::wrap(pick_point_numeric(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, color, max_count));
+    rcpp_result_gen = Rcpp::wrap(pick_point_numeric(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, size, color, max_count));
     return rcpp_result_gen;
 END_RCPP
 }
 // pick_line_raw
-Rcpp::DataFrame pick_line_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const Rcpp::NumericVector color, const int max_count);
-RcppExport SEXP _sdlr_pick_line_raw(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
+Rcpp::DataFrame pick_line_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const int size, const Rcpp::NumericVector color, const int max_count);
+RcppExport SEXP _sdlr_pick_line_raw(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP sizeSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -74,15 +76,16 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
     Rcpp::traits::input_parameter< const int >::type n(nSEXP);
     Rcpp::traits::input_parameter< const bool >::type mark(markSEXP);
+    Rcpp::traits::input_parameter< const int >::type size(sizeSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type color(colorSEXP);
     Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    rcpp_result_gen = Rcpp::wrap(pick_line_raw(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, color, max_count));
+    rcpp_result_gen = Rcpp::wrap(pick_line_raw(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, size, color, max_count));
     return rcpp_result_gen;
 END_RCPP
 }
 // pick_line_numeric
-Rcpp::DataFrame pick_line_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const Rcpp::NumericVector color, const int max_count);
-RcppExport SEXP _sdlr_pick_line_numeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
+Rcpp::DataFrame pick_line_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const int size, const Rcpp::NumericVector color, const int max_count);
+RcppExport SEXP _sdlr_pick_line_numeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP sizeSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -97,15 +100,16 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
     Rcpp::traits::input_parameter< const int >::type n(nSEXP);
     Rcpp::traits::input_parameter< const bool >::type mark(markSEXP);
+    Rcpp::traits::input_parameter< const int >::type size(sizeSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type color(colorSEXP);
     Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    rcpp_result_gen = Rcpp::wrap(pick_line_numeric(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, color, max_count));
+    rcpp_result_gen = Rcpp::wrap(pick_line_numeric(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, size, color, max_count));
     return rcpp_result_gen;
 END_RCPP
 }
 // pick_rect_raw
-Rcpp::DataFrame pick_rect_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const Rcpp::NumericVector color, const int max_count);
-RcppExport SEXP _sdlr_pick_rect_raw(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
+Rcpp::DataFrame pick_rect_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const int size, const Rcpp::NumericVector color, const int max_count);
+RcppExport SEXP _sdlr_pick_rect_raw(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP sizeSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -120,15 +124,16 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
     Rcpp::traits::input_parameter< const int >::type n(nSEXP);
     Rcpp::traits::input_parameter< const bool >::type mark(markSEXP);
+    Rcpp::traits::input_parameter< const int >::type size(sizeSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type color(colorSEXP);
     Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    rcpp_result_gen = Rcpp::wrap(pick_rect_raw(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, color, max_count));
+    rcpp_result_gen = Rcpp::wrap(pick_rect_raw(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, size, color, max_count));
     return rcpp_result_gen;
 END_RCPP
 }
 // pick_rect_numeric
-Rcpp::DataFrame pick_rect_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const Rcpp::NumericVector color, const int max_count);
-RcppExport SEXP _sdlr_pick_rect_numeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
+Rcpp::DataFrame pick_rect_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder, const std::string& title, const int x, const int y, const int renderer_idx, const int n, const bool mark, const int size, const Rcpp::NumericVector color, const int max_count);
+RcppExport SEXP _sdlr_pick_rect_numeric(SEXP vecSEXP, SEXP widthSEXP, SEXP heightSEXP, SEXP colfmtSEXP, SEXP chorderSEXP, SEXP titleSEXP, SEXP xSEXP, SEXP ySEXP, SEXP renderer_idxSEXP, SEXP nSEXP, SEXP markSEXP, SEXP sizeSEXP, SEXP colorSEXP, SEXP max_countSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -143,9 +148,10 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int >::type renderer_idx(renderer_idxSEXP);
     Rcpp::traits::input_parameter< const int >::type n(nSEXP);
     Rcpp::traits::input_parameter< const bool >::type mark(markSEXP);
+    Rcpp::traits::input_parameter< const int >::type size(sizeSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type color(colorSEXP);
     Rcpp::traits::input_parameter< const int >::type max_count(max_countSEXP);
-    rcpp_result_gen = Rcpp::wrap(pick_rect_numeric(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, color, max_count));
+    rcpp_result_gen = Rcpp::wrap(pick_rect_numeric(vec, width, height, colfmt, chorder, title, x, y, renderer_idx, n, mark, size, color, max_count));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -440,12 +446,12 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_sdlr_pick_point_raw", (DL_FUNC) &_sdlr_pick_point_raw, 13},
-    {"_sdlr_pick_point_numeric", (DL_FUNC) &_sdlr_pick_point_numeric, 13},
-    {"_sdlr_pick_line_raw", (DL_FUNC) &_sdlr_pick_line_raw, 13},
-    {"_sdlr_pick_line_numeric", (DL_FUNC) &_sdlr_pick_line_numeric, 13},
-    {"_sdlr_pick_rect_raw", (DL_FUNC) &_sdlr_pick_rect_raw, 13},
-    {"_sdlr_pick_rect_numeric", (DL_FUNC) &_sdlr_pick_rect_numeric, 13},
+    {"_sdlr_pick_point_raw", (DL_FUNC) &_sdlr_pick_point_raw, 14},
+    {"_sdlr_pick_point_numeric", (DL_FUNC) &_sdlr_pick_point_numeric, 14},
+    {"_sdlr_pick_line_raw", (DL_FUNC) &_sdlr_pick_line_raw, 14},
+    {"_sdlr_pick_line_numeric", (DL_FUNC) &_sdlr_pick_line_numeric, 14},
+    {"_sdlr_pick_rect_raw", (DL_FUNC) &_sdlr_pick_rect_raw, 14},
+    {"_sdlr_pick_rect_numeric", (DL_FUNC) &_sdlr_pick_rect_numeric, 14},
     {"_sdlr_getAudioDevicesCpp", (DL_FUNC) &_sdlr_getAudioDevicesCpp, 0},
     {"_sdlr_makeSDLAUDIO", (DL_FUNC) &_sdlr_makeSDLAUDIO, 1},
     {"_sdlr_makeSDLAUDIOint", (DL_FUNC) &_sdlr_makeSDLAUDIOint, 2},

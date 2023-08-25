@@ -1,17 +1,18 @@
 #include <sdlr.h>
 
-Rcpp::DataFrame SDLR_pick_point(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
+Rcpp::DataFrame SDLR_pick_point(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
 {
+  Uint8 r_default, g_default, b_default, a_default;
   if (mark)
   {
     if (color.size() != 4)
     {
       Rcpp::stop("color must has just 4 elements.");
     }
-    if (SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(color[0]), static_cast<Uint8>(color[1]), static_cast<Uint8>(color[2]), static_cast<Uint8>(color[3])) != 0)
+    if (SDL_GetRenderDrawColor(renderer, &r_default, &g_default, &b_default, &a_default) != 0)
     {
       const std::string msg = SDL_GetError();
-      Rcpp::stop("failed to set render draw coloror.\n" + msg + "\n");
+      Rcpp::stop("failed to get render draw color.\n" + msg + "\n");
     }
   }
   std::vector<int> vecx;
@@ -77,13 +78,19 @@ Rcpp::DataFrame SDLR_pick_point(SDL_Window* window, SDL_Renderer* renderer, SDL_
           const std::string msg = SDL_GetError();
           Rcpp::stop("failed to copy texture to renderer.\n" + msg + "\n");
         }
+        if (SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(color[0]), static_cast<Uint8>(color[1]), static_cast<Uint8>(color[2]), static_cast<Uint8>(color[3])) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to set render draw color.\n" + msg + "\n");
+        }
         for (size_t i = 0; i < vecx.size(); ++i)
         {
-          if (SDL_RenderDrawPoint(renderer, vecx[i], vecy[i]) != 0)
-          {
-            const std::string msg = SDL_GetError();
-            Rcpp::stop("failed to draw point.\n" + msg + "\n");
-          }
+          SDLR_RenderDrawPoint(renderer, vecx[i], vecy[i], size);
+        }
+        if (SDL_SetRenderDrawColor(renderer, r_default, g_default, b_default, a_default) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to set render draw color (default).\n" + msg + "\n");
         }
         SDL_RenderPresent(renderer);
       }
@@ -103,19 +110,17 @@ Rcpp::DataFrame SDLR_pick_point(SDL_Window* window, SDL_Renderer* renderer, SDL_
   return Rcpp::DataFrame::create(Rcpp::Named("x") = vecx, Rcpp::Named("y") = vecy);
 }
 
-Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1, const Uint32 wait_time = 1)
+Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1, const Uint32 wait_time = 1)
 {
-  if (mark)
+  Uint8 r_default, g_default, b_default, a_default;
+  if (color.size() != 4)
   {
-    if (color.size() != 4)
-    {
-      Rcpp::stop("color must has just 4 elements.");
-    }
-    if (SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(color[0]), static_cast<Uint8>(color[1]), static_cast<Uint8>(color[2]), static_cast<Uint8>(color[3])) != 0)
-    {
-      const std::string msg = SDL_GetError();
-      Rcpp::stop("failed to set render draw coloror.\n" + msg + "\n");
-    }
+    Rcpp::stop("color must has just 4 elements.");
+  }
+  if (SDL_GetRenderDrawColor(renderer, &r_default, &g_default, &b_default, &a_default) != 0)
+  {
+    const std::string msg = SDL_GetError();
+    Rcpp::stop("failed to get render draw color.\n" + msg + "\n");
   }
   std::vector<int> vec_start_x;
   vec_start_x.reserve(n);
@@ -211,13 +216,32 @@ Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_T
           const std::string msg = SDL_GetError();
           Rcpp::stop("failed to copy texture to renderer.\n" + msg + "\n");
         }
+        if (SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(color[0]), static_cast<Uint8>(color[1]), static_cast<Uint8>(color[2]), static_cast<Uint8>(color[3])) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to set render draw color.\n" + msg + "\n");
+        }
         for (size_t i = 0; i < vec_start_x.size(); ++i)
         {
-          if (SDL_RenderDrawLine(renderer, vec_start_x[i], vec_start_y[i], vec_end_x[i], vec_end_y[i]) != 0)
-          {
-            const std::string msg = SDL_GetError();
-            Rcpp::stop("failed to draw line.\n" + msg + "\n");
-          }
+          SDLR_RenderDrawLine(renderer, vec_start_x[i], vec_start_y[i], vec_end_x[i], vec_end_y[i], size);
+        }
+        if (SDL_SetRenderDrawColor(renderer, r_default, g_default, b_default, a_default) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to set render draw color (default).\n" + msg + "\n");
+        }
+        SDL_RenderPresent(renderer);
+      } else
+      {
+        if (SDL_RenderClear(renderer) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to clear renderer.\n" + msg + "\n");
+        }
+        if (SDL_RenderCopy(renderer, texture, NULL, NULL) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to copy texture to renderer.\n" + msg + "\n");
         }
         SDL_RenderPresent(renderer);
       }
@@ -251,18 +275,23 @@ Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_T
           const std::string msg = SDL_GetError();
           Rcpp::stop("failed to copy texture to renderer.\n" + msg + "\n");
         }
-        for (size_t i = 0; i < vec_start_x.size(); ++i)
-        {
-          if (SDL_RenderDrawLine(renderer, vec_start_x[i], vec_start_y[i], vec_end_x[i], vec_end_y[i]) != 0)
-          {
-            const std::string msg = SDL_GetError();
-            Rcpp::stop("failed to draw line.\n" + msg + "\n");
-          }
-        }
-        if (SDL_RenderDrawLine(renderer, start_x, start_y, tmp_x - window_x, tmp_y - window_y) != 0)
+        if (SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(color[0]), static_cast<Uint8>(color[1]), static_cast<Uint8>(color[2]), static_cast<Uint8>(color[3])) != 0)
         {
           const std::string msg = SDL_GetError();
-          Rcpp::stop("failed to draw line.\n" + msg + "\n");
+          Rcpp::stop("failed to set render draw color.\n" + msg + "\n");
+        }
+        if (mark)
+        {
+          for (size_t i = 0; i < vec_start_x.size(); ++i)
+          {
+            SDLR_RenderDrawLine(renderer, vec_start_x[i], vec_start_y[i], vec_end_x[i], vec_end_y[i], size);
+          }
+        }
+        SDLR_RenderDrawLine(renderer, start_x, start_y, tmp_x - window_x, tmp_y - window_y, size);
+        if (SDL_SetRenderDrawColor(renderer, r_default, g_default, b_default, a_default) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to set render draw color (default).\n" + msg + "\n");
         }
         SDL_RenderPresent(renderer);
         SDL_GetGlobalMouseState(&mouse_x, &mouse_y);
@@ -272,19 +301,17 @@ Rcpp::DataFrame SDLR_pick_line(SDL_Window* window, SDL_Renderer* renderer, SDL_T
   return Rcpp::DataFrame::create(Rcpp::Named("start_x") = vec_start_x, Rcpp::Named("start_y") = vec_start_y, Rcpp::Named("end_x") = vec_end_x, Rcpp::Named("end_y") = vec_end_y);
 }
 
-Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1, const Uint32 wait_time = 1)
+Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* texture, SDL_Event event, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1, const Uint32 wait_time = 1)
 {
-  if (mark)
+  Uint8 r_default, g_default, b_default, a_default;
+  if (color.size() != 4)
   {
-    if (color.size() != 4)
-    {
-      Rcpp::stop("color must has just 4 elements.");
-    }
-    if (SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(color[0]), static_cast<Uint8>(color[1]), static_cast<Uint8>(color[2]), static_cast<Uint8>(color[3])) != 0)
-    {
-      const std::string msg = SDL_GetError();
-      Rcpp::stop("failed to set render draw coloror.\n" + msg + "\n");
-    }
+    Rcpp::stop("color must has just 4 elements.");
+  }
+  if (SDL_GetRenderDrawColor(renderer, &r_default, &g_default, &b_default, &a_default) != 0)
+  {
+    const std::string msg = SDL_GetError();
+    Rcpp::stop("failed to get render draw color.\n" + msg + "\n");
   }
   std::vector<int> vecx;
   vecx.reserve(n);
@@ -405,6 +432,11 @@ Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_T
           const std::string msg = SDL_GetError();
           Rcpp::stop("failed to copy texture to renderer.\n" + msg + "\n");
         }
+        if (SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(color[0]), static_cast<Uint8>(color[1]), static_cast<Uint8>(color[2]), static_cast<Uint8>(color[3])) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to set render draw color.\n" + msg + "\n");
+        }
         for (size_t i = 0; i < vecx.size(); ++i)
         {
           SDL_Rect tmprect;
@@ -412,11 +444,25 @@ Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_T
           tmprect.y = vecy[i];
           tmprect.w = vecw[i];
           tmprect.h = vech[i];
-          if (SDL_RenderDrawRect(renderer, &tmprect) != 0)
-          {
-            const std::string msg = SDL_GetError();
-            Rcpp::stop("failed to draw line.\n" + msg + "\n");
-          }
+          SDLR_RenderDrawRect(renderer, &tmprect, size);
+        }
+        if (SDL_SetRenderDrawColor(renderer, r_default, g_default, b_default, a_default) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to set render draw color (default).\n" + msg + "\n");
+        }
+        SDL_RenderPresent(renderer);
+      } else
+      {
+        if (SDL_RenderClear(renderer) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to clear renderer.\n" + msg + "\n");
+        }
+        if (SDL_RenderCopy(renderer, texture, NULL, NULL) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to copy texture to renderer.\n" + msg + "\n");
         }
         SDL_RenderPresent(renderer);
       }
@@ -470,23 +516,28 @@ Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_T
           const std::string msg = SDL_GetError();
           Rcpp::stop("failed to copy texture to renderer.\n" + msg + "\n");
         }
-        for (size_t i = 0; i < vecx.size(); ++i)
-        {
-          SDL_Rect tmprect;
-          tmprect.x = vecx[i];
-          tmprect.y = vecy[i];
-          tmprect.w = vecw[i];
-          tmprect.h = vech[i];
-          if (SDL_RenderDrawRect(renderer, &tmprect) != 0)
-          {
-            const std::string msg = SDL_GetError();
-            Rcpp::stop("failed to draw line.\n" + msg + "\n");
-          }
-        }
-        if (SDL_RenderDrawRect(renderer, &rect) != 0)
+        if (SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(color[0]), static_cast<Uint8>(color[1]), static_cast<Uint8>(color[2]), static_cast<Uint8>(color[3])) != 0)
         {
           const std::string msg = SDL_GetError();
-          Rcpp::stop("failed to draw line.\n" + msg + "\n");
+          Rcpp::stop("failed to set render draw color.\n" + msg + "\n");
+        }
+        if (mark)
+        {
+          for (size_t i = 0; i < vecx.size(); ++i)
+          {
+            SDL_Rect tmprect;
+            tmprect.x = vecx[i];
+            tmprect.y = vecy[i];
+            tmprect.w = vecw[i];
+            tmprect.h = vech[i];
+            SDLR_RenderDrawRect(renderer, &tmprect, size);
+          }
+        }
+        SDLR_RenderDrawRect(renderer, &rect, size);
+        if (SDL_SetRenderDrawColor(renderer, r_default, g_default, b_default, a_default) != 0)
+        {
+          const std::string msg = SDL_GetError();
+          Rcpp::stop("failed to set render draw color (default).\n" + msg + "\n");
         }
         SDL_RenderPresent(renderer);
         SDL_GetGlobalMouseState(&mouse_x, &mouse_y);
@@ -497,126 +548,126 @@ Rcpp::DataFrame SDLR_pick_rect(SDL_Window* window, SDL_Renderer* renderer, SDL_T
 }
 
 //[[Rcpp::export]]
-Rcpp::DataFrame pick_point_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
+Rcpp::DataFrame pick_point_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
 {
   Rcpp::DataFrame out;
   if (x == -1)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, renderer_idx);
-    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else if (x == -2)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, renderer_idx);
-    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
-    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   }
   SDL_QuitSubSystem(SDL_INIT_VIDEO);
   return out;
 }
 
 //[[Rcpp::export]]
-Rcpp::DataFrame pick_point_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
+Rcpp::DataFrame pick_point_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
 {
   Rcpp::DataFrame out;
   if (x == -1)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, renderer_idx);
-    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else if (x == -2)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, renderer_idx);
-    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
-    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_point(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   }
   SDL_QuitSubSystem(SDL_INIT_VIDEO);
   return out;
 }
 
 //[[Rcpp::export]]
-Rcpp::DataFrame pick_line_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
+Rcpp::DataFrame pick_line_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
 {
   Rcpp::DataFrame out;
   if (x == -1)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, renderer_idx);
-    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else if (x == -2)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, renderer_idx);
-    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
-    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   }
   SDL_QuitSubSystem(SDL_INIT_VIDEO);
   return out;
 }
 
 //[[Rcpp::export]]
-Rcpp::DataFrame pick_line_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
+Rcpp::DataFrame pick_line_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
 {
   Rcpp::DataFrame out;
   if (x == -1)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, renderer_idx);
-    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else if (x == -2)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, renderer_idx);
-    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
-    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_line(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   }
   SDL_QuitSubSystem(SDL_INIT_VIDEO);
   return out;
 }
 
 //[[Rcpp::export]]
-Rcpp::DataFrame pick_rect_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
+Rcpp::DataFrame pick_rect_raw(const Rcpp::RawVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
 {
   Rcpp::DataFrame out;
   if (x == -1)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, renderer_idx);
-    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else if (x == -2)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, renderer_idx);
-    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
-    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   }
   SDL_QuitSubSystem(SDL_INIT_VIDEO);
   return out;
 }
 
 //[[Rcpp::export]]
-Rcpp::DataFrame pick_rect_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
+Rcpp::DataFrame pick_rect_numeric(const Rcpp::NumericVector& vec, const int width, const int height, const std::string& colfmt, const std::string& chorder = "cxy", const std::string& title = "", const int x = 0, const int y = 0, const int renderer_idx = -1, const int n = 1, const bool mark = true, const int size = 5, const Rcpp::NumericVector color = Rcpp::NumericVector::create(0,0,0,255), const int max_count = -1)
 {
   Rcpp::DataFrame out;
   if (x == -1)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, renderer_idx);
-    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else if (x == -2)
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, renderer_idx);
-    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   } else
   {
     SDLRIMAGE img(vec, width, height, colfmt, chorder, title, x, y, 0, 0, renderer_idx);
-    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, color, max_count);
+    out = SDLR_pick_rect(img.window, img.renderer, img.texture, img.event, n, mark, size, color, max_count);
   }
   SDL_QuitSubSystem(SDL_INIT_VIDEO);
   return out;

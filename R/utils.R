@@ -71,6 +71,11 @@ assert_rgba <- function(rgba)
   assert_numeric(rgba, lower = 0, upper = 255, finite = TRUE, any.missing = FALSE, len = 4)
 }
 
+assert_size <- function(size)
+{
+  assert_number(size, lower = 1, finite = TRUE)
+}
+
 assert_type <- function(type)
 {
   assert_string(type, min.chars = 1, pattern = "point|line|rect")

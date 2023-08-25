@@ -9,6 +9,7 @@ pick(
   type = "point",
   n = 1,
   mark = TRUE,
+  size = 5,
   color = c(0, 0, 0, 255),
   pos = "undefined",
   chorder = "cxy",
@@ -24,6 +25,8 @@ pick(
 \item{n}{the number of points, lines, or rectangles to be picked.}
 
 \item{mark}{whether to mark or not.}
+
+\item{size}{size of mark. should be odd. will be added 1 if size is even.}
 
 \item{color}{a vector that represents a color (c(R, G, B, A)).}
 

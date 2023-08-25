@@ -5,6 +5,7 @@
 #' @param type "point", "line", or "rectangle".
 #' @param n the number of points, lines, or rectangles to be picked.
 #' @param mark whether to mark or not.
+#' @param size size of mark. should be odd. will be added 1 if size is even.
 #' @param color a vector that represents a color (c(R, G, B, A)).
 #' @param pos position of window. a numeric vector that represents position, "centered", or "undefined".
 #' @param chorder channel order of image. "cxy" or "xyc".
@@ -19,7 +20,7 @@
 #'   pick(human, type = "rect")
 #' }
 #' @export
-pick <- function(img, type = "point", n = 1, mark = TRUE, color = c(0,0,0,255), pos = "undefined", chorder = "cxy", title = "", renderer_idx = -1)
+pick <- function(img, type = "point", n = 1, mark = TRUE, size = 5, color = c(0,0,0,255), pos = "undefined", chorder = "cxy", title = "", renderer_idx = -1)
 {
   assert_image(img)
   assert_pos(pos)
@@ -28,6 +29,7 @@ pick <- function(img, type = "point", n = 1, mark = TRUE, color = c(0,0,0,255), 
   assert_type(type)
   assert_n(n)
   assert_mark(mark)
+  assert_size(size)
   assert_color(color)
   max_count <- getOption("sdlr_max_count")
   if (is.null(max_count))
@@ -97,28 +99,28 @@ pick <- function(img, type = "point", n = 1, mark = TRUE, color = c(0,0,0,255), 
   {
     if (is.numeric(img))
     {
-      out <- pick_point_numeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, color = color, max_count = max_count)
+      out <- pick_point_numeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, size = size, color = color, max_count = max_count)
     } else
     {
-      out <- pick_point_raw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, color = color, max_count = max_count)
+      out <- pick_point_raw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, size = size, color = color, max_count = max_count)
     }
   } else if (type == "line")
   {
     if (is.numeric(img))
     {
-      out <- pick_line_numeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, color = color, max_count = max_count)
+      out <- pick_line_numeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, size = size, color = color, max_count = max_count)
     } else
     {
-      out <- pick_line_raw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, color = color, max_count = max_count)
+      out <- pick_line_raw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, size = size, color = color, max_count = max_count)
     }
   } else
   {
     if (is.numeric(img))
     {
-      out <- pick_rect_numeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, color = color, max_count = max_count)
+      out <- pick_rect_numeric(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, size = size, color = color, max_count = max_count)
     } else
     {
-      out <- pick_rect_raw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, color = color, max_count = max_count)
+      out <- pick_rect_raw(vec = img, width = width, height = height, colfmt = colfmt, chorder = chorder, title = title, x = pos[1], y = pos[2], renderer_idx = renderer_idx, n = n, mark = mark, size = size, color = color, max_count = max_count)
     }
   }
   out + 1 #R index starts from 1 but C++ index starts from 0.
