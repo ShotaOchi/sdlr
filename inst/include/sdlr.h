@@ -336,7 +336,17 @@ inline std::vector<SDL_Point> SDLR_GetLinePoints(const int& x1, const int& y1, c
 inline void SDLR_RenderDrawPoint(SDL_Renderer* renderer, const int x, const int y, const int size)
 {
   const int r = size / 2;
-  SDLR_RenderFillCirle(renderer, x, y, r);
+  if (size == 1)
+  {
+    if (SDL_RenderDrawPoint(renderer, x, y) != 0)
+    {
+      const std::string msg = SDL_GetError();
+      Rcpp::stop("failed to draw point.\n" + msg + "\n");
+    }
+  } else
+  {
+    SDLR_RenderFillCirle(renderer, x, y, r);
+  }
 }
 
 
@@ -503,11 +513,12 @@ inline void SDLR_RenderDrawRect(SDL_Renderer* renderer, const SDL_Rect* rect, in
 {
   if (size <= 1)
   {
-    if (SDL_RenderFillRect(renderer, rect) != 0)
+    if (SDL_RenderDrawRect(renderer, rect) != 0)
     {
       const std::string msg = SDL_GetError();
       Rcpp::stop("failed to draw line.\n" + msg + "\n");
     }
+    return;
   }
   const int r = size / 2;
   if (size % 2 == 0)
