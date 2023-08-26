@@ -335,7 +335,6 @@ inline std::vector<SDL_Point> SDLR_GetLinePoints(const int& x1, const int& y1, c
 
 inline void SDLR_RenderDrawPoint(SDL_Renderer* renderer, const int x, const int y, const int size)
 {
-  const int r = size / 2;
   if (size == 1)
   {
     if (SDL_RenderDrawPoint(renderer, x, y) != 0)
@@ -345,6 +344,7 @@ inline void SDLR_RenderDrawPoint(SDL_Renderer* renderer, const int x, const int 
     }
   } else
   {
+    const int r = size / 2;
     SDLR_RenderFillCirle(renderer, x, y, r);
   }
 }
