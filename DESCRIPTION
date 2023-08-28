@@ -3,7 +3,7 @@ Type: Package
 Title:  R Interface to SDL2 Library
 Version: 0.1.0
 Authors@R: c(
-    person("Shota", "Ochi", email = "shotaochi1990@gmail.com", role = c("aut", "cre", "cph")))
+    person("Shota", "Ochi", email = "shotaochi1990@gmail.com", role = c("aut", "cre")))
 Maintainer: Shota Ochi <shotaochi1990@gmail.com>
 Description: Offers R interface to video API and sound API of SDL2 library. 
 License: GPL-3
