@@ -200,6 +200,16 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// deleteSDLAUDIO
+void deleteSDLAUDIO(Rcpp::XPtr<SDLAUDIO> ptr);
+RcppExport SEXP _sdlr_deleteSDLAUDIO(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<SDLAUDIO> >::type ptr(ptrSEXP);
+    deleteSDLAUDIO(ptr);
+    return R_NilValue;
+END_RCPP
+}
 // clearSDLAUDIO
 void clearSDLAUDIO(Rcpp::XPtr<SDLAUDIO> ptr);
 RcppExport SEXP _sdlr_clearSDLAUDIO(SEXP ptrSEXP) {
@@ -456,6 +466,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_sdlr_makeSDLAUDIO", (DL_FUNC) &_sdlr_makeSDLAUDIO, 1},
     {"_sdlr_makeSDLAUDIOint", (DL_FUNC) &_sdlr_makeSDLAUDIOint, 2},
     {"_sdlr_makeSDLAUDIOstring", (DL_FUNC) &_sdlr_makeSDLAUDIOstring, 2},
+    {"_sdlr_deleteSDLAUDIO", (DL_FUNC) &_sdlr_deleteSDLAUDIO, 1},
     {"_sdlr_clearSDLAUDIO", (DL_FUNC) &_sdlr_clearSDLAUDIO, 1},
     {"_sdlr_getstatusSDLAUDIO", (DL_FUNC) &_sdlr_getstatusSDLAUDIO, 1},
     {"_sdlr_pauseSDLAUDIO", (DL_FUNC) &_sdlr_pauseSDLAUDIO, 1},

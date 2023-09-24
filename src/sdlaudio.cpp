@@ -47,6 +47,12 @@ Rcpp::XPtr<SDLAUDIO> makeSDLAUDIOstring(const std::string& file, const std::stri
 }
 
 // [[Rcpp::export]]
+void deleteSDLAUDIO(Rcpp::XPtr<SDLAUDIO> ptr)
+{
+  ptr.release();
+}
+
+// [[Rcpp::export]]
 void clearSDLAUDIO(Rcpp::XPtr<SDLAUDIO> ptr)
 {
   ptr->clear();

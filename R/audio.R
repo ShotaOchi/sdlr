@@ -81,6 +81,12 @@ SDLaudio <- R6Class("SDLaudio",
       queueSDLAUDIO(self$extptr);
       invisible(self)
     }
+  ),
+  private = list(
+    finalize = function()
+    {
+      deleteSDLAUDIO(self$extptr)
+    }
   )
 )
 

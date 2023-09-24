@@ -41,6 +41,10 @@ makeSDLAUDIOstring <- function(file, devname) {
     .Call(`_sdlr_makeSDLAUDIOstring`, file, devname)
 }
 
+deleteSDLAUDIO <- function(ptr) {
+    invisible(.Call(`_sdlr_deleteSDLAUDIO`, ptr))
+}
+
 clearSDLAUDIO <- function(ptr) {
     invisible(.Call(`_sdlr_clearSDLAUDIO`, ptr))
 }
